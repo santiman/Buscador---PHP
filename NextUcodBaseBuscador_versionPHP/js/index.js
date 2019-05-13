@@ -1,31 +1,3 @@
-$( document ).ready(function() {
-		$( "#buscar" ).click(function() {
-			cargarCasas();
-		});
-	});
-
-function insertarOfertas(casas) {
-   forEach(casas,function(elemento){
-  		var insertar = "<div class="'card horizontal ofertas'"><div class="'card-image'"><img src="'img/home.jpg'"></div><div class="'card-stacked'"><div class="'card-content'"><div><b>Direccion: " + elemento.Direccion +
-      "</b><p></p></div><div><b>Ciudad: " + elemento.Ciudad +
-      "</b><p></p></div><div><b>Telefono: " + elemento.Telefono +
-      "</b><p></p></div><div><b>Código postal: " + elemento.Codigo_Postal +
-      "</b><p></p></div><div><b>Precio: " + elemento.Tipo +
-      "</b><p></p></div><div><b>Tipo: " + elemento.Precio +
-      "</b><p></p></div></div><div class="'card-action right-align'"><a href="'#'">Ver más</a></div></div></div>";
-  		$(".lista").append(insertar);
-  	});
-  }
-
-function  cargarCasas(){
-	$.ajax({
-  	url: "./data.json",
-  	success: function(datos){
-  		insertarOfertas(datos);
-  	}
-	});
-}
-
 
 /*
   Creación de una función personalizada para jQuery que detecta cuando se detiene el scroll en la página
@@ -39,6 +11,55 @@ $.fn.scrollEnd = function(callback, timeout) {
     $this.data('scrollTimeout', setTimeout(callback,timeout));
   });
 };
+
+function insertarComentarios(comentarios) {
+	$.each(comentarios,function(indice,elemento){
+		var insertar = "<div class='col s12 m5 l5'><div class='card-image'><img src='img/home.jpg' class='responsive-img'></div></div>";
+		$(".lista").append(insertar);
+	});
+}
+
+var Imagen = document.getElementsByClassName('lista');
+
+function  cargarMasComentarios(){
+	$.ajax({
+		url: "./data.json",
+		type:'json',
+		method:'GET',
+		success: function (data){
+			console.log(data);
+			data.forEach(function (val, i) {
+				Imagen.innerHTML = Imagen.innerHTML + "<div class='col s12 m5 l5'><div class='card-image'><img src='img/home.jpg' class='responsive-img'></div></div>";
+			})
+		}
+	});
+};
+
+$( document ).ready(function() {
+	$( "#mostrarTodos" ).click(function() {
+		cargarMasComentarios();
+	});
+});
+
+/*var Imagen = document.getElementsByClassName('lista');
+
+function  cargarMasComentarios(){
+	$.ajax({
+		url: "./data.json",
+		type:'json',
+		method:'GET',
+		success: function (data){
+			console.log(data);
+		}
+	});
+};
+
+$( document ).ready(function() {
+	$( "#mostrarTodos" ).click(function() {
+		cargarMasComentarios();
+	});
+});
+
 /*
   Función que inicializa el elemento Slider
 */
@@ -65,15 +86,13 @@ function playVideoOnScroll(){
     .scroll((event)=>{
       var scrollActual = $(window).scrollTop();
       if (scrollActual > ultimoScroll){
-       video.play();
      } else {
         //this.rewind(1.0, video, intervalRewind);
-        video.play();
+
      }
      ultimoScroll = scrollActual;
     })
     .scrollEnd(()=>{
-      video.pause();
     }, 10)
 }
 
