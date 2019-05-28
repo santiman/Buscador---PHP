@@ -11,6 +11,10 @@ video#vidFondo {
 
 }
 
+p{
+  color: #ff9800
+}
+
 .contenedor{
   background-color: rgba(242, 242, 242, 0.5);
   width: 80%;

@@ -19,7 +19,7 @@
       <h1>Buscador</h1>
     </div>
     <div class="colFiltros">
-      <form action="buscador.php" method="post" id="formulario">
+      <form id="formulario">
         <div class="filtrosContenido">
           <div class="tituloFiltros">
             <h5>Realiza una búsqueda personalizada</h5>
@@ -27,13 +27,13 @@
           <div class="filtroCiudad input-field">
             <label for="selectCiudad">Ciudad:</label>
             <select name="ciudad" id="selectCiudad">
-              <option value="" selected>Elige una ciudad</option>
+              <option value="nada" selected>Elige una ciudad</option>
             </select>
           </div>
           <div class="filtroTipo input-field">
             <label for="selecTipo">Tipo:</label><br>
             <select name="tipo" id="selectTipo">
-              <option value="" selected>Elige un tipo</option>
+              <option value="nada" selected>Elige un tipo</option>
             </select>
           </div>
           <div class="filtroPrecio">
@@ -54,49 +54,8 @@
         <button type="button" name="todos" class="btn-flat waves-effect" id="mostrarTodos">Mostrar Todos</button>
       </div>
 
-      <div class="lista">
-
-        <div class="card horizontal ofertas">
-          <div class="row">
-            <div class="card z-depth-2">
-              <div class="col s12 m5 l5">
-                <div class="card-image">
-                  <img src="img/home.jpg" class="responsive-img">
-                </div>
-              </div>
-            </div>
-            <div class="card z-depth-2">
-              <div class="col s12 m7 l7">
-                <div class="card-stacked">
-                  <div class="card-content">
-                    <div>
-                      <b>Direccion: </b><p></p>
-                    </div>
-                    <div>
-                      <b>Ciudad: </b><p></p>
-                    </div>
-                    <div>
-                      <b>Telefono: </b><p></p>
-                    </div>
-                    <div>
-                      <b>Código postal: </b><p></p>
-                    </div>
-                    <div>
-                      <b>Precio: </b><p></p>
-                    </div>
-                    <div>
-                      <b>Tipo: </b><p></p>
-                    </div>
-                  </div>
-                  <div class="card-action right-align">
-                    <a href="#">Ver más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="lista" id="lista">
+        
       </div>
 
     </div>
